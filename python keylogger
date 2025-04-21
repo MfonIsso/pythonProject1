@@ -1,0 +1,18 @@
+from pynput import keyboard
+#import the necessary modules
+#define the function that will be called when a key is pressed 
+
+def on_press(key):
+    try:
+        print(f"{key.char} pressed")
+    except AttributeError:
+        print(f"{key} pressed")
+#define the function that will be called when the key is released
+def on_release(key):
+    print(f"{key} released")
+    if key == keyboard.Key.esc:
+        return False
+#use the keyboard.listener to listen for key events and bind the defined functions to the on_press and on_release events
+ with keyboard.Listener(on_press=on_press, on_release=on_release) as listener:
+    listener.join()
+
