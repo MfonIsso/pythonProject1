@@ -30,3 +30,25 @@ def is_open_port(ip, port):
 
 # Print open ports
 def print_open_ports(ip):
+     print("\nOpen ports for IP " + ip + ":")
+    for port in range(1, 65536):
+        if is_open_port(ip, port):
+            print(str(port))
+
+
+# Get the user's input and scan for open ports
+def main():
+
+    ip = input("\nEnter the target IP address: ")
+    if not is_valid_ip(ip):
+        print("\nInvalid IP address!")
+        return
+
+
+    print_open_ports(ip)
+
+
+# Call the main function
+if __name__ == "__main__":
+    main()
+
